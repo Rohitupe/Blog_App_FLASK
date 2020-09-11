@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home Page | Blog APP
+{% endblock title %}
+
+{% block contain %}
+<!-- create page -->
+    <div class="container mt-3">
+      <div class="container text-right">
+        <a class="btn btn-success" title="Add New Blog" href="{{ url_for('NewPost') }}" role="button">
+          <i class="fa fa-plus" aria-hidden="true"></i> New Post
+        </a>
+        <h4 class="text-center mt-2">There are {{ blogs|length }} Posts Available on Homepage</h4>
+          <p class="text-center"> check the all blogs page <a href="{{ url_for('allblogs') }}">here</a></p>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- blogs available -->
+    {% for blog in blogs %}
+    <div class="container">
+      <!-- Post One -->
+        <a href="blog/{{ blog.id }}"><h3>{{ blog.title }}</h3></a>
+
+      <span class="text-muted font-italic text-monospace"
+        >Written by *{{ blog.author }}* on {{ blog.date_created.strftime('%d/%m/%Y - (%I:%M)%p')  }}</span
+      >
+
+      <p class="mt-2">
+        {{ blog.content|truncate(300)|safe }} <a href="blog/{{ blog.id }}">read more</a>
+      </p>
+
+      <div class="container">
+        <a class="btn btn-danger" title="Delete Blog" href="/delete/{{ blog.id }}" role="button">
+          <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+        </a>
+        <a class="btn btn-info mx-3" title="Edit Blog" href="/update/{{ blog.id }}" role="button">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+        </a>
+      </div>
+      <hr />
+    </div>
+    {% endfor %}
+
+{% endblock contain %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Add Post | Blog APP
+{% endblock title %}
+
+{% block contain %}
+
+<div class="container text-center mt-2 mx-auto" style="width:100%;">
+    <h4> Create Your Own Blog </h4>
+    <div class="d-flex justify-content-center align-items-center">
+    {% block message %}
+    {% endblock message %}
+    </div>
+    <div class="container">
+    <form class="form-group" method="POST">
+        <div class="row mt-1 justify-content-md-center">
+        <input class="form-control col-sm-4" type="text" name="title" id="title" placeholder="Blog Title">
+        </div><br>
+        <div class="row justify-content-md-center">
+        <input class="form-control col-sm-4" type="text" name="author" id="author" placeholder="Author Name">
+        </div><br>
+        <div class="row justify-content-md-center">
+        <textarea class="form-control col-sm-10" rows="10" typeof="text" name="content" id="content" placeholder="Write your Blog in Here give space in between Paragraphs"></textarea></div><br>
+        <button type="submit" class="btn btn-primary"><i class="fa fa-address-book-o" aria-hidden="true"> Submit</i></button>
+    </form>
+    </div>
+</div>
+
+{% endblock contain %}

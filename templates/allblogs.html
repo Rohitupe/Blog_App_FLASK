@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+All Blogs | Blog APP
+{% endblock title %}
+
+{% block contain %}
+    <div class="container mt-3">
+      <div class="container text-right">
+        <a class="btn btn-success" title="Add New Blog" href="{{ url_for('NewPost') }}" role="button">
+          <i class="fa fa-plus" aria-hidden="true"></i> New Post
+        </a>
+        <h4 class="text-center mt-2">Total Posts Available {{ allBlog|length }}</h4>
+      </div>
+    </div>
+
+    <hr />
+    <!-- blogs available -->
+    {% for blog in allBlog %}
+    <div class="container mt-3">
+      <!-- Post One -->
+        <a href="blog/{{ blog.id }}"><h3>{{ blog.title }}</h3></a>
+
+      <span class="text-muted font-italic text-monospace"
+        >Written by *{{ blog.author }}* on {{ blog.date_created.strftime('%d/%m/%Y - (%I:%M)%p')  }}</span
+      >
+
+      <p class="mt-2">
+        {{ blog.content|truncate(300)|safe }}
+      </p>
+
+      <div class="container">
+        <a class="btn btn-danger" title="Delete Blog" href="/delete/{{ blog.id }}" role="button">
+          <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+        </a>
+        <a class="btn btn-info mx-3" title="Edit Blog" href="/update/{{ blog.id }}" role="button">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+        </a>
+      </div>
+      <hr />
+    </div>
+    {% endfor %}
+
+{% endblock contain %}

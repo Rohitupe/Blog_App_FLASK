@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Update Post | Blog APP
+{% endblock title %}
+
+{% block contain %}
+<div class="container text-center mt-2 mx-auto" style="width:100%;">
+    <h4> Update Your Old Blog </h4>
+
+     {% if (blogs.title or blogs.content) == "" %}
+    <div class="d-flex justify-content-center align-items-center">
+    {% block message %}
+    {% endblock message %}
+    </div>
+    {% else %}
+
+
+    <div class="container">
+    <form class="form-group" method="POST">
+        <div class="row mt-1 justify-content-md-center">
+        <input class="form-control col-sm-4" type="text" name="title" id="title" value="{{ blogs.title }}" placeholder="Blog Title">
+        </div><br>
+        <div class="row justify-content-md-center">
+        <input class="form-control col-sm-4" type="text" name="author" id="author" value="{{ blogs.author }}" placeholder="Author Name">
+        </div><br>
+        <div class="row justify-content-md-center">
+        <textarea class="form-control col-sm-10" rows="10" typeof="text" name="content" id="content" placeholder="Write your Blog in One Paragraph">{{ blogs.content }}</textarea></div><br>
+        <button type="submit" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"> Update</i></button>
+    </form>
+    </div>
+    {% endif %}
+</div>
+{% endblock contain %}

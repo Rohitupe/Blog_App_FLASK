@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ myBlog.title }} | Blog APP
+{% endblock title %}
+
+{% block contain %}
+    <!-- blogs available -->
+    <div class="container mt-4">
+      <!-- Post One -->
+      <h3 class="text-center">{{ myBlog.title }}</h3>
+
+      <span class="text-muted font-italic text-monospace"
+        >Written by *{{ myBlog.author }}* on {{ myBlog.date_created.strftime('%d/%m/%Y - (%I:%M)%p')  }}</span
+      >
+
+      <p class="mt-4" style="text-align: justify; white-space: pre-wrap;">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ myBlog.content }}
+      </p>
+    </div>
+
+{% endblock contain %}

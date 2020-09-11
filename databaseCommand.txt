@@ -1,0 +1,29 @@
+all data base command will be shown here
+
+"""
+To create database
+
+from app import db
+db.create_all()
+"""
+
+"""
+To add Data in data base
+
+from app import db, BlogPost
+
+BlogPost.query.all()   # to see all
+
+db.session.add(        # add in the database
+    BlogPost(
+        title = 'Blog One',
+        content = "Content One",
+        author = "Me My-Self",
+    )
+)
+
+# To See the data which is in the list
+
+BlogPost.query.all()[0].title
+
+"""
